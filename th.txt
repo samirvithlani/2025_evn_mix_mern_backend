@@ -95,16 +95,38 @@ npm i express
 hot reloading / devtools
 
 //global install
+windows:
 npm i nodemon -g
 
 mac:
 sudo npm i nodemon -g
 
-
 node app.js
-
 nodemon app.js
 
+using express js:
+1st api create:
+
+as backend developer we have to produce api 
+as frontend developer we have to conusme api
+
+api create:
+api request method:
+
+backend:
+
+GET : fetch data from database and send to frontend
+POST : fetch data from drontend and save to db 
+PUT
+DELETE
+
+
+
+//localhost:3000/test
+//call ---? react ??? 
+//we can test it from browser
+
+browser only support get api
 
 
 
