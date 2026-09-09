@@ -1,0 +1,112 @@
+console.log("app.js called..")
+const user = require("./users")
+console.log("user...",user)
+
+
+// const employee = require("./employee")
+// console.log(employee)
+// employee() // function called.
+
+const employee = require("./employee")
+console.log("emp",employee)
+employee.testEmployee()
+employee.testEmployee2()
+var x = employee.shareEmployee(100)
+console.log(x)
+
+
+
+
+
+
+
+FRONTEND FW
+    react js:
+
+BACKEND FW :
+    server side rendering 
+    java-spring
+    python-d...
+    js->node js
+
+javascript --> client
+if i want js output server --> server side render --> nodejs
+nodejs is js runtime env:
+
+MERN:
+mongodb
+expres js
+react
+node:
+
+express js middleware fw build on top of node js
+node js --> http module ---> ccore tech 
+    api --> 100 line
+express --> express module -->
+    100 line implement -->10 line
+
+
+app.js | index.js | server.js | main.js
+
+
+module based  : es5 module
+package based : common js
+
+
+import statments
+require("")
+
+d:
+ MERN:
+  learning26
+  backend
+    ctlr+l -->
+    npm init --y
+    code .
+
+app.js
+employee.js
+users.js
+
+
+create 1 filr product.js
+product.js
+create 1 array of product --> gpt -->
+must have id name price:
+create 1 function searchproudtcbyid 
+pass id in param -->and return thta product object
+
+
+server creation
+
+web server:
+request --> process --> response -->
+
+java --> apache tomcat
+php --> xampp wamp
+
+python,node --> own server
+node --> http module use
+express --> server
+
+
+npm i express
+
+hot reloading / devtools
+
+//global install
+npm i nodemon -g
+
+mac:
+sudo npm i nodemon -g
+
+
+node app.js
+
+nodemon app.js
+
+
+
+
+
+
