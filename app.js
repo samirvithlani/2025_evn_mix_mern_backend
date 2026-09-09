@@ -20,6 +20,22 @@ app.get("/user",(req,res)=>{
     res.json({message:"user fetched",data:user})
 })
 
+const users =[
+    {id:1,name:"raj",age:23},
+    {id:2,name:"ram",age:25},
+    {id:3,name:"shyam",age:22},
+    {id:4,name:"amit",age:27},
+]
+
+
+//localhost:3000/users
+app.get("/users",(req,res)=>{
+    res.json({
+        message:"users fetched",
+        data:users
+    })
+})
+
 
 
 
