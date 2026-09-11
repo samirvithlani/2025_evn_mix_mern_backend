@@ -129,6 +129,39 @@ DELETE
 browser only support get api
 
 
+request:
+response:
+
+request :->
+
+
+req.params : url -->localhost:3000/user/:id
+localhost:3000/user/12
+req.params.id
+
+localhost:3000/user/:name/:email
+localhost:3000/user/amit/amit@gmail.com
+req.params.name
+req.params.email
+
+----------------------------------------------
+req.query:
+---------
+localhost:3000/user?name=amit ---> url --> localhost:3000/user
+req.query.name = amit
+
+localhost:3000/user?name=amit&age=23&email=amit@gmail.com
+
+
+-------------------------
+req.headers
+--------------------------
+req.body
+--------------------------
+
+
+
+
 
 
 

@@ -37,6 +37,83 @@ app.get("/users",(req,res)=>{
 })
 
 
+//localhost:3000/book/101
+app.get("/book/:id",(req,res)=>{
+    console.log("req.params",req.params)
+    console.log("id",req.params.id)
+    res.json({
+        message:"ok",
+        id:req.params.id
+    })
+})
+
+//locahost:3000/book1/101/java
+app.get("/book1/:id/:name",(req,res)=>{
+
+    console.log("params",req.params)
+    res.json({
+        message:"ok",
+        id:req.params.id,
+        name:req.params.name
+    })
+})
+
+const books = [
+    {id:1,name:"java"},
+    {id:2,name:"python"},
+    {id:3,name:"c"},
+    {id:4,name:"cpp"},
+]
+
+//localhost:3000/findbook/1
+app.get("/findbook/:id",(req,res)=>{
+
+    //loop --> find function
+    const foundBook = books.find((b)=>b.id == req.params.id)
+    if(foundBook){
+        res.json({
+            message:"book found",
+            data:foundBook
+        })
+    }else{
+        res.json({
+            message:"book not found"
+        })
+    }
+
+})
+
+const students = [
+    {id:1,name:"fenil",age:18},
+    {id:2,name:"raj",age:19},
+    {id:3,name:"parth",age:21},
+    {id:4,name:"jay",age:23},
+    {id:5,name:"ajay",age:20},
+    
+]
+
+//localhost:3000/filtstudent/21
+app.get("/filtstudent/:age",(req,res)=>{
+    
+    const age = req.params.age;
+    //age>20
+    const foundStudents = students.filter((stu)=>stu.age>age)
+    //founstudents=[] ---> array
+    if(foundStudents.length>0){
+        res.json({
+            message:"studentfound",
+            data:foundStudents
+        })
+    }
+    else{
+        res.json({
+            message:"student not found",
+            
+        })
+    }
+
+})
+
 
 
 const PORT = 3000
