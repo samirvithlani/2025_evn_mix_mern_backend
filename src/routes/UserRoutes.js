@@ -10,4 +10,6 @@ const userController = require("../controllers/UserController")
 
 //localhost:3000/users
 router.get("/users",userController.getUsers)
+//localhost:3000/user/101
+router.get("/user/:id",userController.getUserById)
 module.exports = router
