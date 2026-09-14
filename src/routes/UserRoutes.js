@@ -1,0 +1,13 @@
+//router is part of express
+//and for createing apis we need only router not full express module..
+const router = require("express").Router()
+const userController = require("../controllers/UserController")
+
+// router.get("/users",(req,res)=>{
+//     //but this function is created already in controller so just call it
+// })
+
+
+//localhost:3000/users
+router.get("/users",userController.getUsers)
+module.exports = router
