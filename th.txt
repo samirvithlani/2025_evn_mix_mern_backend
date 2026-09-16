@@ -323,5 +323,17 @@ const users =[
 and find object of given id and return it from api
 
 
+database: mongodb:
+
+mongodb : package
+mongoose : package:
+
+mongoose orm package:
+object realational mapping:
+
+mongodb ->collection -->ibject
 
 
+
+
+npm i mongoose

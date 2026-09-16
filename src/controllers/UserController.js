@@ -5,10 +5,15 @@
 //     res.json({message:"user fetched",data:user})
 // })
 
-const getUsers = (req,res)=>{
+const userModel = require("../models/UserModel")
+
+const getUsers = async(req,res)=>{
     
+        //db.users.find()
+        const users = await userModel.find() 
+
         //response send
-        res.json({message:"user fetched"})
+        res.json({message:"user fetched",data:users})
 }
 
 const  getUserById = (req,res)=>{
