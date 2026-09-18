@@ -37,7 +37,33 @@ const getUserById = async (req, res) => {
   }
 };
 
+const deleteUserById = async(req,res)=>{
+
+    //id --> req.params
+    //db.users.deleteOne({_id:req.params.id})
+    //userModel.deleteOne({_id:req.params.id})
+    //mongoose
+    //userModel.findByIdAndDelete(req.params.id)
+
+    const deletedUser = await userModel.findByIdAndDelete(req.params.id)
+    if(deletedUser){
+        res.json({
+            message:"user deleted",
+            data:deletedUser
+        })
+    }
+    else{
+        res.json({
+            message:"user not found to delete."
+        })
+    }
+
+
+
+}
+
 module.exports = {
   getUsers,
   getUserById,
+  deleteUserById
 };

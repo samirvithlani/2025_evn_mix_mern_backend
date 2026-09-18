@@ -12,4 +12,8 @@ const userController = require("../controllers/UserController")
 router.get("/users",userController.getUsers)
 //localhost:3000/user/101
 router.get("/user/:id",userController.getUserById)
+
+//delete
+//localhost:3000/user/qwuqwouiqwk0102
+router.delete("/user/:id",userController.deleteUserById)
 module.exports = router
