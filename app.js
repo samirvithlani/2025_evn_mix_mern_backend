@@ -1,6 +1,7 @@
 const express = require("express")
 //create ref varibale of express
 const app = express()
+app.use(express.json()) //applied global middleware wich will accept json data as well
 const dbConnection = require("./src/utils/DBConnections")
 dbConnection() // db connection...
 

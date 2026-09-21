@@ -337,3 +337,5 @@ mongodb ->collection -->ibject
 
 
 npm i mongoose
+
+go to app js and inform your server we are sending data in json formate in req.body object

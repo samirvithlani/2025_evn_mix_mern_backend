@@ -62,8 +62,28 @@ const deleteUserById = async(req,res)=>{
 
 }
 
+const createUser = async(req,res)=>{
+  //req.params
+  //req.query
+  //req.body --->
+
+  //db.users.insertOne({name:"amit",age:23,status:true})
+  //userModel.inserOne({name:"amit",age:23,status:true})
+  //userModel.insertOne(req.body)
+
+  const savedUser = await userModel.insertOne(req.body)
+
+  console.log("req.body",req.body)
+  res.json({
+    message:"user saved..",
+    data:savedUser
+  })
+
+}
+
 module.exports = {
   getUsers,
   getUserById,
-  deleteUserById
+  deleteUserById,
+  createUser
 };

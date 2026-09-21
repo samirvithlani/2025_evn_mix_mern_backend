@@ -5,6 +5,15 @@ const Scehma = mongoose.Schema
 //creating an object of schema class
 const userModel = new Scehma({
     //fileds..  POST...
+    name:{
+        type:String
+    },
+    age:{
+        type:Number
+    },
+    status:{
+        type:Boolean
+    }
 })
 
 //mongoose.model("users",userModel) --> connect user table with userModel object
