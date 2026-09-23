@@ -17,4 +17,5 @@ router.get("/user/:id",userController.getUserById)
 //localhost:3000/user/qwuqwouiqwk0102
 router.delete("/:id",userController.deleteUserById)
 router.post("/user",userController.createUser)
+router.put("/user/:id",userController.updateUser)
 module.exports = router

@@ -92,9 +92,41 @@ const createUser = async (req, res) => {
   }
 };
 
+const updateUser  = async(req,res)=>{
+
+  //req.params.id
+  //req.body
+    //db.user.updateOne({_id:req.params.id},{$set:{req.body}})
+
+    try{
+
+      //const userAfterUpdate = await userModel.findByIdAndUpdate(req.params.id,req.body)
+      const userAfterUpdate = await userModel.findByIdAndUpdate(req.params.id,req.body,{new:true})
+      if(userAfterUpdate){
+        res.json({
+          message:"user updated.",
+          data:userAfterUpdate
+        })
+      }
+      else{
+        res.json({
+          message:"user not found to update"
+        })
+      }
+
+    }catch(err){
+      res.json({
+        message:"error while updating user",
+        err:err
+      })
+    }
+
+}
+
 module.exports = {
   getUsers,
   getUserById,
   deleteUserById,
   createUser,
+  updateUser
 };
