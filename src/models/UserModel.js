@@ -11,8 +11,21 @@ const userModel = new Scehma({
     age:{
         type:Number
     },
+    bloodGroup:{
+        type:String,
+        enum:["A+","A-","B+","B-"]
+    },
     status:{
-        type:Boolean
+        type:Boolean,
+        default:true
+    },
+    email:{
+        type:String,
+        unique:true,
+    },
+    password:{
+        type:String,
+        required:true
     }
 })
 
@@ -21,7 +34,7 @@ const userModel = new Scehma({
 //eg: db.users.find() -->
 //userModel.find()
 
-module.exports = mongoose.model("users",userModel)
+module.exports = mongoose.model("users1",userModel)
 
 //if users collection is not available in connected db it will create...
 //-->use controller...

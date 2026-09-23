@@ -28,62 +28,73 @@ const getUserById = async (req, res) => {
       message: "user found",
       data: foundUser,
     });
-  }
-  else{
+  } else {
     res.json({
       message: "user not found",
-      
     });
   }
 };
 
-const deleteUserById = async(req,res)=>{
+const deleteUserById = async (req, res) => {
+  //id --> req.params
+  //db.users.deleteOne({_id:req.params.id})
+  //userModel.deleteOne({_id:req.params.id})
+  //mongoose
+  //userModel.findByIdAndDelete(req.params.id)
 
-    //id --> req.params
-    //db.users.deleteOne({_id:req.params.id})
-    //userModel.deleteOne({_id:req.params.id})
-    //mongoose
-    //userModel.findByIdAndDelete(req.params.id)
+  const deletedUser = await userModel.findByIdAndDelete(req.params.id);
+  if (deletedUser) {
+    res.json({
+      message: "user deleted",
+      data: deletedUser,
+    });
+  } else {
+    res.json({
+      message: "user not found to delete.",
+    });
+  }
+};
 
-    const deletedUser = await userModel.findByIdAndDelete(req.params.id)
-    if(deletedUser){
-        res.json({
-            message:"user deleted",
-            data:deletedUser
-        })
-    }
-    else{
-        res.json({
-            message:"user not found to delete."
-        })
-    }
+// const createUser = async(req,res)=>{
+//   //req.params
+//   //req.query
+//   //req.body --->
 
+//   //db.users.insertOne({name:"amit",age:23,status:true})
+//   //userModel.inserOne({name:"amit",age:23,status:true})
+//   //userModel.insertOne(req.body)
 
+//   const savedUser = await userModel.insertOne(req.body)
 
-}
+//   console.log("req.body",req.body)
+//   res.json({
+//     message:"user saved..",
+//     data:savedUser
+//   })
 
-const createUser = async(req,res)=>{
-  //req.params
-  //req.query
-  //req.body --->
+// }
 
-  //db.users.insertOne({name:"amit",age:23,status:true})
-  //userModel.inserOne({name:"amit",age:23,status:true})
-  //userModel.insertOne(req.body)
+const createUser = async (req, res) => {
+  try {
+    const savedUser = await userModel.insertOne(req.body);
 
-  const savedUser = await userModel.insertOne(req.body)
-
-  console.log("req.body",req.body)
-  res.json({
-    message:"user saved..",
-    data:savedUser
-  })
-
-}
+    console.log("req.body", req.body);
+    res.json({
+      message: "user saved..",
+      data: savedUser,
+    });
+    
+  } catch (err) {
+    res.json({
+      message: "error while saving user",
+      err: err,
+    });
+  }
+};
 
 module.exports = {
   getUsers,
   getUserById,
   deleteUserById,
-  createUser
+  createUser,
 };
