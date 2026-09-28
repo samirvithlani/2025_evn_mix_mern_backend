@@ -6,6 +6,7 @@
 // })
 
 const userModel = require("../models/UserModel");
+const mailSend = require("../utils/MailUtil")
 
 const getUsers = async (req, res) => {
   //db.users.find()
@@ -77,7 +78,8 @@ const deleteUserById = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const savedUser = await userModel.insertOne(req.body);
-
+    //mail..
+    await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
     console.log("req.body", req.body);
     res.json({
       message: "user saved..",
