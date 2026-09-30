@@ -26,6 +26,10 @@ const userModel = new Scehma({
     password:{
         type:String,
         required:true
+    },
+    roleId:{
+        type:mongoose.Types.ObjectId,
+        ref:"roles" //check roleModel and model name must be same...
     }
 })
 

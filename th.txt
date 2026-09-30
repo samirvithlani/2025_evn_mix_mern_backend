@@ -367,3 +367,23 @@ task:
 html:
 attechment:
 images/abc.png -->
+
+
+
+role table:
+id name
+1  admin
+2  manager
+3  hr
+
+user
+id name email age ... roleId
+1  raj  raj@.. 23        2
+1  jaya  jaya@.. 23      3
+
+select * from users;
+
+along role data...
+join
+
+create table users(....roleId int,foreign key referance(id) ..role)

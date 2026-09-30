@@ -7,10 +7,11 @@
 
 const userModel = require("../models/UserModel");
 const mailSend = require("../utils/MailUtil")
+const roleModel = require("../models/RoleModel")
 
 const getUsers = async (req, res) => {
   //db.users.find()
-  const users = await userModel.find();
+  const users = await userModel.find().populate("roleId"); //check column name
 
   //response send
   res.json({ message: "user fetched", data: users });
