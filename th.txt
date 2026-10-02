@@ -387,3 +387,8 @@ along role data...
 join
 
 create table users(....roleId int,foreign key referance(id) ..role)
+
+
+middleware:
+app.js --->routes  -->  controller
+                  logic
