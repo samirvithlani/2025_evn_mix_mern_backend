@@ -76,9 +76,32 @@ const deleteUserById = async (req, res) => {
 
 // }
 
+// const createUser = async (req, res) => {
+//   try {
+//     const savedUser = await userModel.insertOne(req.body);
+//     //mail..
+//     await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
+//     console.log("req.body", req.body);
+//     res.json({
+//       message: "user saved..",
+//       data: savedUser,
+//     });
+    
+//   } catch (err) {
+//     res.json({
+//       message: "error while saving user",
+//       err: err,
+//     });
+//   }
+// };
+
+
+//file upload create user.
 const createUser = async (req, res) => {
   try {
-    const savedUser = await userModel.insertOne(req.body);
+    console.log("req.file...",req.file)
+    //const savedUser = await userModel.insertOne(req.body);
+    const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
     //mail..
     await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
     console.log("req.body", req.body);
@@ -94,6 +117,7 @@ const createUser = async (req, res) => {
     });
   }
 };
+
 
 const updateUser  = async(req,res)=>{
 

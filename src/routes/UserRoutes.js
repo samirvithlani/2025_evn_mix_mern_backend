@@ -5,6 +5,7 @@ const userController = require("../controllers/UserController")
 const demoMiddleware = require("../middlewares/DemoMiddleware")
 const validationMiddleware = require("../middlewares/ZodMiddleware")
 const userValidationSchema = require("../validationshemas/UserValidationSchema")
+const uplaod = require("../middlewares/UploadMiddleware")
 
 // router.get("/users",(req,res)=>{
 //     //but this function is created already in controller so just call it
@@ -19,6 +20,7 @@ router.get("/user/:id",userController.getUserById)
 //delete
 //localhost:3000/user/qwuqwouiqwk0102
 router.delete("/:id",userController.deleteUserById)
-router.post("/user",validationMiddleware(userValidationSchema),userController.createUser)
+//router.post("/user",validationMiddleware(userValidationSchema),userController.createUser)
+router.post("/user",uplaod.single("file"),userController.createUser)
 router.put("/user/:id",userController.updateUser)
 module.exports = router

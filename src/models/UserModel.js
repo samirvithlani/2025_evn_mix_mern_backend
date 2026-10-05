@@ -30,6 +30,9 @@ const userModel = new Scehma({
     roleId:{
         type:mongoose.Types.ObjectId,
         ref:"roles" //check roleModel and model name must be same...
+    },
+    profilePath:{
+        type:String
     }
 })
 

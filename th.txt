@@ -392,3 +392,40 @@ create table users(....roleId int,foreign key referance(id) ..role)
 middleware:
 app.js --->routes  -->  controller
                   logic
+
+npm i zod                  
+
+
+file uplaoding:
+copy file from one location to other location programatically..
+
+user: reg : profile pic:
+
+user --> bind
+product -->
+
+
+upload : store:
+
+localserver: low space
+database: costly
+cloud: price =-> cheapest:
+
+
+multer:
+
+npm i multer
+user reg: profile pic
+
+
+userModel: create filed:
+middlewares:
+    uploadMiddleware:
+
+userRoutes: 
+in post api apply upload middleware
+
+userController
+const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
+
+
