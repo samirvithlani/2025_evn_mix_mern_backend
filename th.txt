@@ -429,3 +429,5 @@ userController
 const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
 
 
+
+npm i cloudinary

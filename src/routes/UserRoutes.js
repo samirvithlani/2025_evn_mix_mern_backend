@@ -22,5 +22,6 @@ router.get("/user/:id",userController.getUserById)
 router.delete("/:id",userController.deleteUserById)
 //router.post("/user",validationMiddleware(userValidationSchema),userController.createUser)
 router.post("/user",uplaod.single("file"),userController.createUser)
+router.post("/userm",uplaod.array("file",3),userController.createUsermultipuleimages)
 router.put("/user/:id",userController.updateUser)
 module.exports = router

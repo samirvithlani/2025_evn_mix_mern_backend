@@ -8,6 +8,7 @@
 const userModel = require("../models/UserModel");
 const mailSend = require("../utils/MailUtil")
 const roleModel = require("../models/RoleModel")
+const uploadToCloud = require("../utils/UploadToCloud")
 
 const getUsers = async (req, res) => {
   //db.users.find()
@@ -101,9 +102,13 @@ const createUser = async (req, res) => {
   try {
     console.log("req.file...",req.file)
     //const savedUser = await userModel.insertOne(req.body);
-    const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
+    const cloudinaryResponse = await uploadToCloud(req.file.path)
+    console.log("cloundinay response",cloudinaryResponse)
+    //{.... secure_url}
+    //const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
+    const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url});
     //mail..
-    await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
+    //await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
     console.log("req.body", req.body);
     res.json({
       message: "user saved..",
@@ -118,6 +123,31 @@ const createUser = async (req, res) => {
   }
 };
 
+
+//create user with multipule images...
+const createUsermultipuleimages = async (req, res) => {
+  try {
+    console.log("req.files...",req.files)
+    //const savedUser = await userModel.insertOne(req.body);
+    
+    //{.... secure_url}
+    //const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
+    const savedUser = await userModel.insertOne({...req.body,profilePath:req.files[0].path});
+    //mail..
+    //await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
+    console.log("req.body", req.body);
+    res.json({
+      message: "user saved..",
+      data: savedUser,
+    });
+    
+  } catch (err) {
+    res.json({
+      message: "error while saving user",
+      err: err,
+    });
+  }
+};
 
 const updateUser  = async(req,res)=>{
 
@@ -155,5 +185,6 @@ module.exports = {
   getUserById,
   deleteUserById,
   createUser,
-  updateUser
+  updateUser,
+  createUsermultipuleimages
 };
