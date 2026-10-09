@@ -33,7 +33,10 @@ const userModel = new Scehma({
     },
     profilePath:{
         type:String
-    }
+    },
+    thumbnails:[
+        {type:String}
+    ]
 })
 
 //mongoose.model("users",userModel) --> connect user table with userModel object

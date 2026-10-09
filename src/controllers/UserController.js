@@ -130,8 +130,14 @@ const createUsermultipuleimages = async (req, res) => {
     console.log("req.files...",req.files)
     //const savedUser = await userModel.insertOne(req.body);
     
-    //{.... secure_url}
-    //const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
+    //loop.. req.files.len
+    //upload to cloudinary ..
+
+    const cloudinaryResponseres = await Promise.all(req.files.map((f)=>uploadToCloud(f.path)))  //[]
+    const allImages = cloudinaryResponseres.map((url)=>url.secure_url)
+    console.log(allImages)
+  
+    
     const savedUser = await userModel.insertOne({...req.body,profilePath:req.files[0].path});
     //mail..
     //await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
