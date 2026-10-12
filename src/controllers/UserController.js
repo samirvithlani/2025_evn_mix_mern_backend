@@ -9,6 +9,7 @@ const userModel = require("../models/UserModel");
 const mailSend = require("../utils/MailUtil")
 const roleModel = require("../models/RoleModel")
 const uploadToCloud = require("../utils/UploadToCloud")
+const bcrypt = require("bcrypt")
 
 const getUsers = async (req, res) => {
   //db.users.find()
@@ -106,7 +107,11 @@ const createUser = async (req, res) => {
     console.log("cloundinay response",cloudinaryResponse)
     //{.... secure_url}
     //const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.path});
-    const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url});
+
+    const salt = bcrypt.genSaltSync(12)
+    const hashedPassword = bcrypt.hashSync(req.body.password,salt)
+    
+    const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url,password:hashedPassword});
     //mail..
     //await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
     console.log("req.body", req.body);

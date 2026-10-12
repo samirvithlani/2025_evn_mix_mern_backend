@@ -442,3 +442,24 @@ npm i bcrypt:
 const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url});
 before this line..
 
+
+
+userController --->
+POST: LoginUser:->
+
+req.body ->email
+req.body ->password
+
+****notwork db.users.findOne({email:email,password:password})
+
+algo compare:
+ram11@yopmail.com
+
+first :
+find userObject from email
+coonst foundUser = await db.users.findOne({email:req.body.email})
+//foundUser ---> encrypted password
+if foundUser -->
+bcrypt.compareSync(req.body.password,foundUser.password)
+
+
