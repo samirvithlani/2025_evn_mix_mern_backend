@@ -431,3 +431,14 @@ const savedUser = await userModel.insertOne({...req.body,profilePath:req.file.pa
 
 
 npm i cloudinary
+
+
+while registering user: we have to encrytp password and store encrypt password in db
+bcrypt:
+
+npm i bcrypt:
+
+
+const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url});
+before this line..
+
