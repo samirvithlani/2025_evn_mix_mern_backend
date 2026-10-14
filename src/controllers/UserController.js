@@ -110,7 +110,6 @@ const createUser = async (req, res) => {
 
     const salt = bcrypt.genSaltSync(12)
     const hashedPassword = bcrypt.hashSync(req.body.password,salt)
-    
     const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url,password:hashedPassword});
     //mail..
     //await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)

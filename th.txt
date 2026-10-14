@@ -458,8 +458,51 @@ ram11@yopmail.com
 first :
 find userObject from email
 coonst foundUser = await db.users.findOne({email:req.body.email})
+token...
 //foundUser ---> encrypted password
 if foundUser -->
 bcrypt.compareSync(req.body.password,foundUser.password)
 
+
+LOGIN: --->response ---> user object:
+
+
+navratri : pass purchase: 
+pass recive --> firstName:subh lastname: email password location 
+
+pass --> code token
+
+outh 2.0 security protocal
+
+how to secure api:
+
+authenticaiton:
+    you are registered user in portal:
+authorization:
+    you are allowed to access some data:
+
+but ???? how to make api secure
+if you are workin with web apge? email password
+
+
+
+eg: if you purchase google map api:
+how google will identify that you are authenticated user:
+
+
+
+setp:
+first user has to login in portal:
+user will get 1 kind of token insted of full object
+that token concept call jwt token 
+that token is representing loggedin user data:
+
+
+
+
+npm i jsonwebtoken
+const jwt  = require("jsonwebtoken")
+const secret = "royal" // in industry theu declare 24 0r 32 char sec in env file.
+const token = jwt.sign(foundUser.toObjct(),secret)
+send this token in response
 
