@@ -10,6 +10,8 @@ const mailSend = require("../utils/MailUtil")
 const roleModel = require("../models/RoleModel")
 const uploadToCloud = require("../utils/UploadToCloud")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+const secret = "samir"
 
 const getUsers = async (req, res) => {
   //db.users.find()
@@ -190,11 +192,50 @@ const updateUser  = async(req,res)=>{
 
 }
 
+const loginUser = async(req,res)=>{
+
+  const email = req.body.email
+  const password = req.body.password // plain password..
+
+  //founduser from email
+
+  const foundUserFromEmail = await userModel.findOne({email:email})
+  if(foundUserFromEmail){
+    //comare password usng bcrypt
+    if(bcrypt.compareSync(password,foundUserFromEmail.password)){
+      //token genration...
+      //const token = jwt.sign(foundUserFromEmail.toObject(),secret)
+      const token = jwt.sign({id:foundUserFromEmail._id},secret)
+      res.status(200).json({
+        message:"user found",
+        //data:foundUserFromEmail
+        data:token
+      })
+
+    }
+    else{
+      res.status(401).json({
+        message:"invalid password"
+      })
+    }
+
+  }
+  else{
+    res.status(404).json({
+      message:"user not found signup first."
+    })
+  }
+
+
+}
+
+
 module.exports = {
   getUsers,
   getUserById,
   deleteUserById,
   createUser,
   updateUser,
-  createUsermultipuleimages
+  createUsermultipuleimages,
+  loginUser
 };

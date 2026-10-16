@@ -6,6 +6,7 @@ const demoMiddleware = require("../middlewares/DemoMiddleware")
 const validationMiddleware = require("../middlewares/ZodMiddleware")
 const userValidationSchema = require("../validationshemas/UserValidationSchema")
 const uplaod = require("../middlewares/UploadMiddleware")
+const authMiddleware = require("../middlewares/AuthMiddleware")
 
 // router.get("/users",(req,res)=>{
 //     //but this function is created already in controller so just call it
@@ -13,7 +14,9 @@ const uplaod = require("../middlewares/UploadMiddleware")
 
 
 //localhost:3000/users
-router.get("/users",demoMiddleware("python"),userController.getUsers)
+//router.get("/users",demoMiddleware("python"),userController.getUsers)
+//router.get("/users",userController.getUsers)
+router.get("/users",authMiddleware,userController.getUsers)
 //localhost:3000/user/101
 router.get("/user/:id",userController.getUserById)
 
@@ -24,4 +27,5 @@ router.delete("/:id",userController.deleteUserById)
 router.post("/user",uplaod.single("file"),userController.createUser)
 router.post("/userm",uplaod.array("file",3),userController.createUsermultipuleimages)
 router.put("/user/:id",userController.updateUser)
+router.post("/login",userController.loginUser)
 module.exports = router
