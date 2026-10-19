@@ -16,7 +16,8 @@ const authMiddleware = async(req,res,next)=>{
             //verify tokrn using jwt
             try{
                 const decoded = await jwt.verify(token,secret)
-                console.log("decoded..",decoded)
+                console.log("decoded..",decoded) //{id:"asnsjaoisaassoin"}
+                //userModel -->id --->findById --> data --->valid.. no --> not valid user
                 next()
 
             }catch(err){
