@@ -530,3 +530,22 @@ subject:resetpassword
 text:url
 
 
+resetpassword:post:
+req.body.password : plain passowrd
+req.query.token
+
+token -->verify ->chck auth middleware 
+object --> {id:"ashoiasjaisojiasas"}
+
+findUser from that id..
+
+password hash.. using bcrypt:
+
+
+findByIdAndUpdate(id,{passowrd:hashedPasswor})
+
+
+
+
+
+
