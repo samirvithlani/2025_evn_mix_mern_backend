@@ -506,3 +506,27 @@ const secret = "royal" // in industry theu declare 24 0r 32 char sec in env file
 const token = jwt.sign(foundUser.toObjct(),secret)
 send this token in response
 
+
+
+
+forgotpassword:
+button click -->email --> Link --->new page -->new password -->submit -->
+
+resetpassword:locahost:3000/resetpassword
+
+
+forgotpassword:POST : localhost:3000/forgotpassword
+req.body.email 
+db check -->emaik -->user exists
+if existe -->object
+const foundUserFromEmail = await userModel.findOne({email:email})
+token
+const token = jwt.sign({id:foundUserFromEmail._id},secret,{expiresIn:60*10})
+
+url:http://localhost:3000/resetpassword?token=token
+email: req.body.email 
+to : req.body.email 
+subject:resetpassword
+text:url
+
+
