@@ -113,6 +113,12 @@ const createUser = async (req, res) => {
     const salt = bcrypt.genSaltSync(12)
     const hashedPassword = bcrypt.hashSync(req.body.password,salt)
     const savedUser = await userModel.insertOne({...req.body,profilePath:cloudinaryResponse.secure_url,password:hashedPassword});
+
+    //token genrate -->savedUse._id
+    const token = jwt.sign({id:savedUser._id},secret,{expiresIn:"6m"})
+    //update query
+    await userModel.findByIdAndUpdate(savedUser._id,{refreshToken:token})
+
     //mail..
     //await mailSend(savedUser.email,"welcome mail",`Hello ${savedUser?.name} welcome to app`)
     console.log("req.body", req.body);

@@ -36,7 +36,10 @@ const userModel = new Scehma({
     },
     thumbnails:[
         {type:String}
-    ]
+    ],
+    refreshToken:{
+        type:String
+    }
 })
 
 //mongoose.model("users",userModel) --> connect user table with userModel object

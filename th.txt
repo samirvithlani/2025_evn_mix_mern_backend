@@ -545,6 +545,52 @@ password hash.. using bcrypt:
 findByIdAndUpdate(id,{passowrd:hashedPasswor})
 
 
+2 type of tokens are there:
+access token:
+refresh token:
+
+api secure: all api token bind..
+
+token expiration time:
+lets assume exp time is 6 month:
+
+and your token is comporomised:
+till 6 month data breach..
+
+
+
+short lived token: expire ---> long token  -->db check --> new short live token..
+
+
+when we register user: refresh token[long live] -->db store
+when access token is expired  -->refresh token  ---> db user --> access token ...
+
+
+1st part:
+userModel:refreshToken
+createUser:api : userController --> after reg of user ---> genrate token and update in db
+
+
+
+
+expire -->accessToken -->new token -->from refreshToken
+
+POST: userController: /getaccesstoken
+const getAccessToken(req,res)=>{
+
+    const token = req.body.token; //refreshToken check in db and copy 
+    find userObject with this token
+    findOne({refreshToken:token})
+
+    if user found...
+    genrate short lived access token -->check login api we have done same thing
+    if user not found
+    res.json({mind your bussiness})
+
+
+}
+
+
 
 
 
