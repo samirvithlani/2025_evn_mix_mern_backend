@@ -592,6 +592,26 @@ const getAccessToken(req,res)=>{
 
 
 
+-->userApi call -->if api protected ?? token
+router.get("/users",authMiddleware,userController.getUsers)
+
+
+token ?? login?
+
+
+role base token access:
+
+register ?? role???
+
+login?
+
+i ahve 100 apis
+
+50 apis are only access to maaneger role !!
+25 apis are only access to student role !!
+25 api are accessible to all loggedin users
 
 
 
+
+make auth middleware param:

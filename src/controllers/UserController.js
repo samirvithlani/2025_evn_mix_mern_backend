@@ -128,6 +128,7 @@ const createUser = async (req, res) => {
     });
     
   } catch (err) {
+    console.log(err)
     res.json({
       message: "error while saving user",
       err: err,

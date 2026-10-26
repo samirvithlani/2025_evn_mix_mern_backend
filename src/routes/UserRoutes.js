@@ -16,7 +16,8 @@ const authMiddleware = require("../middlewares/AuthMiddleware")
 //localhost:3000/users
 //router.get("/users",demoMiddleware("python"),userController.getUsers)
 //router.get("/users",userController.getUsers)
-router.get("/users",authMiddleware,userController.getUsers)
+//router.get("/users",authMiddleware,userController.getUsers)
+router.get("/users",authMiddleware("ADMIN"),userController.getUsers)
 //localhost:3000/user/101
 router.get("/user/:id",userController.getUserById)
 
