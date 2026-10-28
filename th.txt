@@ -611,7 +611,28 @@ i ahve 100 apis
 25 apis are only access to student role !!
 25 api are accessible to all loggedin users
 
-
-
-
 make auth middleware param:
+
+single device login:
+
+
+session id:
+
+login ---> logout --->
+
+login:
+    -->sessionid : UUID  ->3rd pacakge install --> crypto[builtin]
+
+userModel:
+    userSessionid:{
+        type:String
+    }
+
+
+authmiddleware:
+to check session id
+
+
+logout api:
+
+-->session id destory:
